@@ -28,7 +28,8 @@ if (!$con) {
 
         $output = '';
         if (password_verify($password, $user['PASSWORD'])) {
-            $_SESSION['user'] = $user['NAME'];
+            $_SESSION['user'] = $login;
+            $_SESSION['name'] = $user['NAME'];
             $_SESSION['logged'] = true;
         } else {
             $output = '<label class="text-danger">Invalid Login or Password</label>';
