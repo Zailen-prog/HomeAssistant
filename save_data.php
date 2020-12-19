@@ -10,24 +10,15 @@ foreach ($_REQUEST as $key => $value) {
         case "Temp":
             $Temp = $value;
             break;
-        case "Light":
-            $Light = $value;
-            break;
         case "Humidity":
             $Humidity = $value;
-            break;
-        case "Temp2":
-            $Temp2 = $value;
-            break;
-        case "Distance":
-            $Distance = $value;
             break;
     }
 }
 
-$sq = "insert into Data(ID, Temp, Humidity, Temp2, Light, Distance) values (?, ?, ?, ?, ?, ?)";
+$sq = "insert into Data(ID, Temp, Humidity) values (?, ?, ?)";
 $ss = mysqli_prepare($con, $sq);
-$ss->bind_param("sdidii", $id, $Temp, $Humidity, $Temp2, $Light, $Distance);
+$ss->bind_param("sdi", $id, $Temp, $Humidity);
 $ss->execute();
 CloseCon($con);
-echo $date;
+echo "succes";

@@ -124,25 +124,6 @@ Highcharts.setOptions({
     },
 });
 
-var chart;
-function generate_chart(serie, msg, msg2) {
-    chart = new Highcharts.Chart('modal-chart', {
-        title: {
-            text: msg
-        },
-
-        series: [{
-            data: serie
-        }],
-
-        yAxis: {
-            title: {
-                text: msg2,
-            },
-        },
-    });
-}
-
 var chartT = new Highcharts.Chart('chart-temp', {
     title: {
         text: "Temperature"
@@ -188,6 +169,25 @@ box.forEach(box => {
         }
     })
 })
+
+var chart;
+function generate_chart(serie, msg, msg2) {
+    chart = new Highcharts.Chart('modal-chart', {
+        title: {
+            text: msg
+        },
+
+        series: [{
+            data: serie
+        }],
+
+        yAxis: {
+            title: {
+                text: msg2,
+            },
+        },
+    });
+}
 
 modal.addEventListener('click', (e) => {
     if (e.target.classList.contains('modal')) {

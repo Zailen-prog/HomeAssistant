@@ -4,7 +4,7 @@ include 'db_connection.php';
 function getAllReadings($limit)
 {
     $con = OpenCon();
-    $sql = "SELECT  Temp, Humidity, Temp2, Light, Distance, Date FROM Data WHERE ID = '" . $_SESSION['user'] . "' order by Date desc limit " . $limit;
+    $sql = "SELECT  Temp, Humidity, Date FROM Data WHERE ID = '" . $_SESSION['user'] . "' order by Date desc limit " . $limit;
     if ($result = $con->query($sql)) {
         return $result;
     } else {
@@ -17,7 +17,7 @@ function getLastReadings()
 {
     $con = OpenCon();
 
-    $sql = "SELECT  Temp, Humidity, Temp2, Light, Distance, Date FROM Data WHERE ID = '" . $_SESSION['user'] . "' order by Date desc limit 1";
+    $sql = "SELECT  Temp, Humidity, Date FROM Data WHERE ID = '" . $_SESSION['user'] . "' order by Date desc limit 1";
     if ($result = $con->query($sql)) {
         return $result->fetch_assoc();
     } else {
