@@ -228,3 +228,41 @@ function scaleValue(value, from, to) {
     var capped = Math.min(from[1], Math.max(from[0], value)) - from[0];
     return ~~(capped * scale + to[0]);
 }
+
+var nr = 1;
+$('.relays').each(function () {
+    var relay = $(this).find('p');
+    var check = $(this).find(':checkbox');
+    $.ajax({
+        url: "get_relay_names.php",
+        method: "POST",
+        data: "relay_nr=" + nr + "&check=1",
+        success: function (data) {
+            var json = JSON.parse(data);
+            relay.html(json.name);
+            if (json.state == 1) {
+                check.prop('checked', true);
+            }
+            else {
+                check.prop('checked', false);
+            }
+        }
+    })
+    nr = nr + 1;
+
+    $(this).find(':checkbox').change(function () {
+        if ($(this).is(':checked')) {
+            var val = 1;
+        } else {
+            var val = 0;
+        }
+        $.ajax({
+            url: "save_relays.php",
+            method: "POST",
+            data: "relay_name=" + relay.text() + "&val=" + val
+        })
+    });
+
+});
+
+

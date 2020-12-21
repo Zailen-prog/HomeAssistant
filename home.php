@@ -110,7 +110,7 @@ if (!isset($_SESSION['logged'])) {
                 <input type="checkbox" id="relay1">
                 <div class="sliding-relay"> </div>
                 <label class="relay-label" for="relay1">
-                    <p class="relays-text">relay 1</p>
+                    <p class="relays-text">relay1</p>
                 </label>
             </div>
         </div>
@@ -119,7 +119,7 @@ if (!isset($_SESSION['logged'])) {
                 <input type="checkbox" id="relay2">
                 <div class="sliding-relay"> </div>
                 <label class="relay-label" for="relay2">
-                    <p class="relays-text">relay 2</p>
+                    <p class="relays-text">relay2</p>
                 </label>
             </div>
         </div>
@@ -128,7 +128,7 @@ if (!isset($_SESSION['logged'])) {
                 <input type="checkbox" id="relay3">
                 <div class="sliding-relay"> </div>
                 <label class="relay-label" for="relay3">
-                    <p class="relays-text">relay 3</p>
+                    <p class="relays-text">relay3</p>
                 </label>
             </div>
         </div>
@@ -137,7 +137,7 @@ if (!isset($_SESSION['logged'])) {
                 <input type="checkbox" id="relay4">
                 <div class="sliding-relay"> </div>
                 <label class="relay-label" for="relay4">
-                    <p class="relays-text">relay 4</p>
+                    <p class="relays-text">relay4</p>
                 </label>
             </div>
         </div>
@@ -146,7 +146,7 @@ if (!isset($_SESSION['logged'])) {
                 <input type="checkbox" id="relay5">
                 <div class="sliding-relay"> </div>
                 <label class="relay-label" for="relay5">
-                    <p class="relays-text">relay 5</p>
+                    <p class="relays-text">relay5</p>
                 </label>
             </div>
         </div>
@@ -155,7 +155,7 @@ if (!isset($_SESSION['logged'])) {
                 <input type="checkbox" id="relay6">
                 <div class="sliding-relay"> </div>
                 <label class="relay-label" for="relay6">
-                    <p class="relays-text">relay 6</p>
+                    <p class="relays-text">relay6</p>
                 </label>
             </div>
         </div>
@@ -164,7 +164,7 @@ if (!isset($_SESSION['logged'])) {
                 <input type="checkbox" id="relay7">
                 <div class="sliding-relay"> </div>
                 <label class="relay-label" for="relay7">
-                    <p class="relays-text">relay 7</p>
+                    <p class="relays-text">relay7</p>
                 </label>
             </div>
         </div>
@@ -173,7 +173,7 @@ if (!isset($_SESSION['logged'])) {
                 <input type="checkbox" id="relay8">
                 <div class="sliding-relay"> </div>
                 <label class="relay-label" for="relay8">
-                    <p class="relays-text">relay 8</p>
+                    <p class="relays-text">relay8</p>
                 </label>
             </div>
         </div>
@@ -182,7 +182,7 @@ if (!isset($_SESSION['logged'])) {
                 <input type="checkbox" id="relay9">
                 <div class="sliding-relay"> </div>
                 <label class="relay-label" for="relay9">
-                    <p class="relays-text">relay 9</p>
+                    <p class="relays-text">relay9</p>
                 </label>
             </div>
         </div>
@@ -191,7 +191,7 @@ if (!isset($_SESSION['logged'])) {
                 <input type="checkbox" id="relay10">
                 <div class="sliding-relay"> </div>
                 <label class="relay-label" for="relay10">
-                    <p class="relays-text">relay 10</p>
+                    <p class="relays-text">relay10</p>
                 </label>
             </div>
         </div>

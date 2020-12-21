@@ -49,6 +49,102 @@
   padding: 5px 0;
   border-radius: 5px;
   color: white;
-  text-align: center;
+  text-align: left;
+  padding: 10px;
+}
+
+input, textarea {
+  border-style: inset;
+  border-width: 2px;
+  font-size: 15px;
+  background: #27303a;
+  color: #fff;
+}
+
+#name-relay {
+  margin-top: 10px;
+}
+
+#description-relay {
+  width: 100%;
+  height: 70px;
+  resize: none;
+  margin-top: 10px;
+}
+
+.temp-control, .humi-control {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px 0;
+}
+
+.relay-label {
+  position: relative;
+  display: block;
+  width: 45px;
+  height: 20px;
+  margin-right: 150px;
+}
+
+.relay-label input {
+  display: none;
+}
+
+.sliding-relay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #2b3543;
+  border-radius: 20px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.sliding-relay:after {
+  position: absolute;
+  content: "";
+  width: 24px;
+  height: 24px;
+  top: -2px;
+  border-radius: 50%;
+  background-color: white;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+input:checked + .sliding-relay {
+  background: #66FCF1;
+}
+
+input:checked + .sliding-relay::after {
+  -webkit-transform: translateX(26px);
+          transform: translateX(26px);
+  background: #00b8ac;
+}
+
+.relays-text {
+  position: relative;
+  left: 55px;
+  color: white;
+  width: 150px;
+}
+
+#save, #cancel {
+  display: none;
+}
+
+.btn {
+  cursor: pointer;
+  border-style: outset;
+  border-width: 2px;
+  color: #66FCF1;
+  font-size: 20px;
+  background: #27303a;
+  border-radius: 20px;
+  height: 30px;
+  width: 100px;
 }
 /*# sourceMappingURL=relays.css.map */

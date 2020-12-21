@@ -1,5 +1,4 @@
 <?php
-//include 'get_data.php';
 session_start();
 if (!isset($_SESSION['logged'])) {
     header('location:index.php');
@@ -43,40 +42,90 @@ if (!isset($_SESSION['logged'])) {
     <div class="content-wrapper">
         <div class="relay-box">
             <div class="relays nr-1">
-                <span>relay 1</span>
+                <span>relay1</span>
             </div>
             <div class="relays nr-2">
-                <span>relay 2</span>
+                <span>relay2</span>
             </div>
             <div class="relays nr-3">
-                <span>relay 3</span>
+                <span>relay3</span>
             </div>
             <div class="relays nr-4">
-                <span>relay 4</span>
+                <span>relay4</span>
             </div>
             <div class="relays nr-5">
-                <span>relay 5</span>
+                <span>relay5</span>
             </div>
             <div class="relays nr-6">
-                <span>relay 6</span>
+                <span>relay6</span>
             </div>
             <div class="relays nr-7">
-                <span>relay 7</span>
+                <span>relay7</span>
             </div>
             <div class="relays nr-8">
-                <span>relay 8</span>
+                <span>relay8</span>
             </div>
             <div class="relays nr-9">
-                <span>relay 9</span>
+                <span>relay9</span>
             </div>
             <div class="relays nr-10">
-                <span>relay 10</span>
+                <span>relay10</span>
             </div>
         </div>
         <div class="relay-info">
+            <form id="save_values" method="POST">
+                <div>
+                    <label for="name-relay">
+                        <p>Name</p>
+                    </label>
+                    <input type="text" id="name-relay" name="name-relay" disabled>
+                </div>
+                <div class="temp-control">
+                    <div class="relay-label">
+                        <input type="checkbox" id="temp-control" name="temp-control" disabled>
+                        <div class="sliding-relay"> </div>
+                        <label class="relay-label" for="temp-control">
+                            <p class="relays-text">Temp Control</p>
+                        </label>
+                    </div>
+
+                    <label for="temp-value-relay">
+                        Ref value:
+                    </label>
+                    <input type="number" min=-10 max=150 id="temp-value-relay" name="temp-value-relay" disabled>
+                </div>
+
+                <div class="humi-control">
+                    <div class="relay-label">
+                        <input type="checkbox" id="humi-control" name="humi-control" disabled>
+                        <div class="sliding-relay"> </div>
+                        <label class="relay-label" for="humi-control">
+                            <p class="relays-text">Humidity Control</p>
+                        </label>
+                    </div>
+
+                    <label for="humi-value-relay">
+                        Ref value:
+                    </label>
+                    <input type="number" min=0 max=100 id="humi-value-relay" name="humi-value-relay" disabled>
+                </div>
+
+                <div>
+                    <label for="description-relay">
+                        <p>Description</p>
+                    </label>
+                    <textarea id="description-relay" maxlength=255 name="description-relay" disabled></textarea>
+                </div>
+
+                <button id="edit" type="button" class="btn edit">Edit</button>
+                <button id="save" type="submit" class="btn save">Save</button>
+                <button id="cancel" type="button" class="btn cancel">Cancel</button>
+
+            </form>
         </div>
     </div>
 
+    <script src="relays.js"></script>
     <script src="nav.js"></script>
 
 </body>
