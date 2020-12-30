@@ -1,5 +1,13 @@
 <?php
-include 'db_connection.php';
+
+/**
+ * skrypt obsługujący rejestracje sprawdza czy podany login i
+ * emial nie znajduje się w bazie danych i czy podany emial jest prawidłowego
+ * formatu, jeśli wszystkie wartunki zostaną spełnione to następuje zapisanie
+ * danych do bazy danych nowego użytkownika, jeśli któryś z wartunków nie jest spełniony
+ * wypisuje odpowiedni komunikat
+ */
+include '../../db_handlers/db_connection.php';
 session_start();
 
 if (!isset($_SESSION['logged'])) {

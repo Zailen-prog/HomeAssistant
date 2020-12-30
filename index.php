@@ -15,8 +15,7 @@ if (isset($_SESSION['logged'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Assistant</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="index.css">
-
+    <link rel="stylesheet" href="index/style/index.css">
 </head>
 
 <body>
@@ -47,7 +46,7 @@ if (isset($_SESSION['logged'])) {
         </div>
     </div>
 
-    <script src="index.js"></script>
+    <script src="index/js/index.js"></script>
 
 </body>
 

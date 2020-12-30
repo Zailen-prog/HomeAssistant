@@ -1,4 +1,6 @@
 <?php
+
+/* funkcja otwierająca połączonenie z bazą dancyh */
 function OpenCon()
 {
     $dbhost = "127.0.0.1";
@@ -15,6 +17,7 @@ function OpenCon()
     return $con;
 }
 
+/* funckaj zamykająca połączenie z bazą danych */
 function CloseCon($con)
 {
     $con->close();

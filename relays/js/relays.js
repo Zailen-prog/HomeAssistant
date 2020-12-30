@@ -1,10 +1,15 @@
-
+/**
+ * funckja wykonująca ajax do pliku get_relay_info.php
+ * który pobiera informacje o przekaźniku o danej nazwie
+ * i zwraca je w postaci zmiennej json, następnie dane te
+ * są wpisywane w odpowienie pola na stronie relays
+ */
 function show_data() {
     $.ajax({
-        url: "save_relays.php",
+        url: "php/get_relay_info.php",
         method: "POST",
-        data: { show: show.text() },
         dataType: 'json',
+        data: "show=" + show.text(),
         success: function (data) {
             var jsonArray = data;
             $('#name-relay').val(show.text());
@@ -23,19 +28,26 @@ function show_data() {
             }
             $('#humi-value-relay').val(jsonArray.Humi_value);
             $('#description-relay').val(jsonArray.description);
-        }
+        },
     })
 }
 
+var show = $('.nr-1').children('span');
 var nr = 1;
+/**
+ * dla każdego przekaźnika zostaje wywołany ajax do pliku get_relay_names.php
+ * który zwraca stan i nazwe przekaźnika o podanym numerze, następnie ta nazwa zostaje
+ * wpisana na stronie
+ */
 $('.relays').each(function () {
     var relay = $(this).children('span');
     $.ajax({
-        url: "get_relay_names.php",
+        url: "../db_handlers/get_relay_names.php",
         method: "POST",
         data: "relay_nr=" + nr,
+        dataType: 'json',
         success: function (data) {
-            relay.html(data);
+            relay.html(data.name);
         }
     })
     nr = nr + 1;
@@ -43,17 +55,18 @@ $('.relays').each(function () {
         show = $(this).children('span');
         show_data();
     });
+
+
 });
 
-var show = $('.nr-1').children('span');
-$(document).ready(function () {
-    show_data();
-});
-
+/**
+ * po naciśnieciu przycisku save podczas edycji wykonuja ajax do pliku update_relays.php
+ * i zapisuje wszystkie dane w bazie danych jak i wyłącza możliwośc edycji
+ */
 $('#save_values').on('submit', function (event) {
     event.preventDefault();
     $.ajax({
-        url: "save_relays.php",
+        url: "php/update_relays.php",
         method: "POST",
         data: $(this).serialize() + "&update=" + show.text(),
         success: function (data) {
@@ -64,6 +77,10 @@ $('#save_values').on('submit', function (event) {
 
 });
 
+/**
+ * podcas kilknięcia edit, chowa przycisk edit i pokazuje przyciski save i cancel i 
+ * umożliwia edytowanie 
+ */
 $('.edit').click(function () {
     $(this).hide();
     $(this).siblings('.save, .cancel').show();
@@ -72,6 +89,11 @@ $('.edit').click(function () {
     })
 });
 
+/**
+ * podcas kilknięcia cancel, chowa przycisk save i cancel i pokazuje przycisk edit i
+ * wyłącza moźliwość edycji jak i wykonuje funckje show_data która wypisuje poprzednie
+ * dane  
+ */
 $('.cancel').click(function () {
     $(this).siblings('.edit').show();
     $(this).siblings('.save').hide();
@@ -82,6 +104,9 @@ $('.cancel').click(function () {
     show_data();
 });
 
+/**
+ * podczas kliknięcia save chowa przycisk save i cancel i pokazuje przycisk edit
+ */
 $('.save').click(function () {
     $(this).siblings('.edit').show();
     $(this).siblings('.cancel').hide();

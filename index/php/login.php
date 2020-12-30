@@ -1,11 +1,17 @@
 <?php
-include 'db_connection.php';
+
+/**
+ * skrypt obsługujący logowanie sprawdzający czy podane dane są w bazie danych
+ * jesli tak to następuje zalogowanie i przekierowanie na 
+ * strone home, jeśli nie to wyświetla komunikat o błędnych danych
+ */
+include '../../db_handlers/db_connection.php';
 session_start();
 if (!isset($_SESSION['logged'])) {
     if (!(isset($_POST['loginL']) && isset($_POST['passwordL'])))
-        header('location:index.php');
+        header('location: ../index.php');
 } else
-    header('location:home.php');
+    header('location:../../home/home.php');
 $con = OpenCon();
 
 // Check connection

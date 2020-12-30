@@ -1,5 +1,4 @@
 <?php
-//include 'get_data.php';
 session_start();
 if (!isset($_SESSION['logged'])) {
     header('location:index.php');
@@ -17,8 +16,8 @@ if (!isset($_SESSION['logged'])) {
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="nav-body.css">
+    <link rel="stylesheet" href="style/home.css">
+    <link rel="stylesheet" href="/nav/style/nav-body.css">
     <title>Home Page</title>
 </head>
 
@@ -27,10 +26,10 @@ if (!isset($_SESSION['logged'])) {
         <div class="logo">Home Assistant</div>
         <ul class="nav-links">
             <li><a href="home.php">Home</a></li>
-            <li><a href="relays.php">Relays</a></li>
-            <li><a href="account.php">My Account</a></li>
+            <li><a href="../relays/relays.php">Relays</a></li>
+            <li><a href="../account/account.php">My Account</a></li>
             <li>
-                <form action="logout.php" method="POST">
+                <form action="/db_handlers/logout.php" method="POST">
                     <button type="submit" class="logout-btn">Logout</button>
                 </form>
             </li>
@@ -200,8 +199,8 @@ if (!isset($_SESSION['logged'])) {
         <div id="modal-chart" class="modal-chart"></div>
     </div>
 
-    <script src="nav.js"></script>
-    <script src="home.js"></script>
+    <script src="/nav/js/nav.js"></script>
+    <script src="js/home.js"></script>
 
 
 </body>

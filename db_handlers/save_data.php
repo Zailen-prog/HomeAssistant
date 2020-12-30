@@ -1,5 +1,9 @@
 <?php
-include 'db_connection.php';
+
+/**
+ * skrypt odbierający dane od esp8266 i zapisujący je do bazy danych
+ */
+include '/db_handlers/db_connection.php';
 $con = OpenCon();
 
 foreach ($_REQUEST as $key => $value) {

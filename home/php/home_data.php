@@ -1,6 +1,15 @@
 <?php
+
+/**
+ * skrypt używający funckji z pliku get_data.php
+ * i zapisujący wyniki do zmiennej typu json
+ */
 include 'get_data.php';
+
 session_start();
+if (!isset($_SESSION['logged'])) {
+    header('location:../../index.php');
+}
 
 $readings_count = 100;
 $result = getAllReadings($readings_count);

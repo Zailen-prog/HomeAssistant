@@ -1,6 +1,15 @@
 <?php
-include 'db_connection.php';
 
+/**
+ * zestaw funkcji wykorzystywanych do wyciągniącia odpowiednich wartości z bazy danych
+ * wykorzystywany w pliku home_data.php
+ */
+include '../../db_handlers/db_connection.php';
+
+/**
+ * zwraca ostatnie ($limit) pomiarów temperatury i wilgotności jak i data ich wykonania
+ * limit - ilość pomiarów
+ */
 function getAllReadings($limit)
 {
     $con = OpenCon();
@@ -12,7 +21,9 @@ function getAllReadings($limit)
     }
     CloseCon($con);
 }
-
+/**
+ * zwraca ostatni pomiar temperatury i wilgotności i date ich wykonania
+ */
 function getLastReadings()
 {
     $con = OpenCon();
@@ -26,6 +37,11 @@ function getLastReadings()
     CloseCon($con);
 }
 
+/**
+ * zwraca minimalną wartośc w ($limit) ostatnich pomiarach 
+ * limit - ilość pomiarów
+ * value - temp albo wilgotność
+ */
 function minReading($limit, $value)
 {
     $con = OpenCon();
@@ -40,6 +56,11 @@ function minReading($limit, $value)
     CloseCon($con);
 }
 
+/**
+ * zwraca maksymalną wartośc w ($limit) ostatnich pomiarach 
+ * limit - ilość pomiarów
+ * value - temp albo wilgotność
+ */
 function maxReading($limit, $value)
 {
     $con = OpenCon();
@@ -54,6 +75,11 @@ function maxReading($limit, $value)
     CloseCon($con);
 }
 
+/**
+ * zwraca średnią wartośc w ($limit) ostatnich pomiarach 
+ * limit - ilość pomiarów
+ * value - temp albo wilgotność
+ */
 function avgReading($limit, $value)
 {
     $con = OpenCon();
