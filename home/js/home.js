@@ -78,6 +78,7 @@ $(document).ready(function () {
             else if (json_array.timezone <= 14) {
                 document.getElementById("timezone").selectedIndex = json_array.timezone + 25;
             }
+            prev_timezone = $('.timezone').val();
         },
         complete: function () {
             setTimeout(get_data_to_disp, interval);
@@ -402,17 +403,23 @@ $('.relays').each(function () {
 
 });
 
-var prev_timezone = $('.timezone').val();
+/**
+ * gdy zmienimy strefę czasową zostaje wywołany ajax do pliku set_timezone.php który
+ * zapisuje nową strefę czasową do bazy danych, następnie zostają zaktualizowane 
+ * wykresy o nową strefę czasową
+ */
+var prev_timezone;
 $('.timezone').change(function () {
     $.ajax({
         url: "php/set_timezone.php",
         method: "POST",
         data: "timezone=" + $('.timezone').val()
     })
-    if (prev_timezone > $('.timezone').val()) {
-        times = times.map(function (val) { return val - ((Math.abs(prev_timezone - $('.timezone').val())) * 3600000); });
-    } else if (prev_timezone < $('.timezone').val()) {
-        times = times.map(function (val) { return val + ((Math.abs(prev_timezone - $('.timezone').val())) * 3600000); });
+    var offest = Math.abs(prev_timezone - $('.timezone').val());
+    if (+prev_timezone > +$('.timezone').val()) {
+        times = times.map(function (val) { return val - offest * 3600000; });
+    } else if (+prev_timezone < +$('.timezone').val()) {
+        times = times.map(function (val) { return val + offest * 3600000; });
     }
     prev_timezone = $('.timezone').val();
     for (var i = 0; i < times.length; i++) {
@@ -432,25 +439,33 @@ $('.timezone').change(function () {
     });
 });
 
+/**
+ * podczas kliknięcia przycisku draw wybrany przedział czasowy jest na
+ * czas uniksowy, następnie zostaje wywołany ajax do pliku get_data_to_charts.php
+ * który zwraca dane pomiarowe z podego przedziału czasowego poczymm zostaje zaktualizowny
+ * wykres o nowe dane
+ */
 $('.draw-btn').click(function () {
     var start_time = (+new Date($('#start-time').val()) - ($('.timezone').val() * 3600000)) / 1000;
     var end_time = (+new Date($('#end-time').val()) - ($('.timezone').val() * 3600000)) / 1000;
-    $.ajax({
-        url: "php/get_data_to_charts.php",
-        method: "POST",
-        data: "chart=" + chart_id + "&start=" + start_time + "&end=" + end_time,
-        dataType: "json",
-        success: function (data) {
-            var series = [];
-            times = data.reading_time.map(function (val) { return val + ($('.timezone').val() * 3600000); });
-            for (var i = 0; i < times.length; i++) {
-                series.push([times[i], data.series[i]]);
+    if (start_time < end_time) {
+        $.ajax({
+            url: "php/get_data_to_charts.php",
+            method: "POST",
+            data: "chart=" + chart_id + "&start=" + start_time + "&end=" + end_time,
+            dataType: "json",
+            success: function (data) {
+                var series = [];
+                times = data.reading_time.map(function (val) { return val + ($('.timezone').val() * 3600000); });
+                for (var i = 0; i < times.length; i++) {
+                    series.push([times[i], data.series[i]]);
+                }
+                chart.update({
+                    series: [{
+                        data: series
+                    }],
+                });
             }
-            chart.update({
-                series: [{
-                    data: series
-                }],
-            });
-        }
-    })
+        })
+    }
 })
