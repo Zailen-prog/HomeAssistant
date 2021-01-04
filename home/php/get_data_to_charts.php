@@ -1,14 +1,14 @@
 <?php
 
+/**
+ * zwraca dane pomiarowe z danego przedziału czasowego
+ */
 include '../../db_handlers/db_connection.php';
 session_start();
 if (!isset($_SESSION['logged'])) {
     header('location:../../index.php');
 }
-/**
- * zwraca ostatnie ($limit) pomiarów temperatury i wilgotności jak i data ich wykonania
- * limit - ilość pomiarów
- */
+
 $con = OpenCon();
 $sql = "SELECT  " . $_POST['chart'] . " as series, Date FROM Data WHERE ID = '" . $_SESSION['user'] . "' AND Date > FROM_UNIXTIME(" . $_POST['start'] . ") AND Date < FROM_UNIXTIME(" . $_POST['end'] . ")";
 if ($result = $con->query($sql)) {

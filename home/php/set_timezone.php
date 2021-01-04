@@ -1,6 +1,6 @@
 <?php
 /*
-    Skrypt php zapisuje stan przekaźnika o danej nazwie
+    Skrypt php zapisuje wybraną strefę czasową
 */
 include '../../db_handlers/db_connection.php';
 
