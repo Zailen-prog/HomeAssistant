@@ -3,22 +3,32 @@
   display: grid;
   -ms-grid-columns: auto auto 600px;
       grid-template-columns: auto auto 600px;
-  -ms-grid-rows: 255px 255px;
-      grid-template-rows: 255px 255px;
-      grid-template-areas: "weather temp temp-chart" "weather humi humi-chart";
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
+  -ms-grid-rows: auto 255px 255px;
+      grid-template-rows: auto 255px 255px;
+      grid-template-areas: "timezone timezone timezone" "weather temp temp-chart" "weather humi humi-chart";
   gap: 10px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-transform: translateY(60px);
           transform: translateY(60px);
+  padding-bottom: 10px;
+}
+
+.timezone {
+  background-color: #1F2833;
+  color: white;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: timezone;
+  width: 400px;
 }
 
 .weather-wrapper {
-  -ms-grid-row: 1;
+  -ms-grid-row: 2;
   -ms-grid-row-span: 2;
   -ms-grid-column: 1;
   grid-area: weather;
@@ -27,25 +37,29 @@
 }
 
 .gauge--2 {
-  -ms-grid-row: 2;
+  height: 255px;
+  -ms-grid-row: 3;
   -ms-grid-column: 2;
   grid-area: humi;
 }
 
 .gauge--1 {
-  -ms-grid-row: 1;
+  height: 255px;
+  -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: temp;
 }
 
 #chart-temp {
-  -ms-grid-row: 1;
+  height: 255px;
+  -ms-grid-row: 2;
   -ms-grid-column: 3;
   grid-area: temp-chart;
 }
 
 #chart-humi {
-  -ms-grid-row: 2;
+  height: 255px;
+  -ms-grid-row: 3;
   -ms-grid-column: 3;
   grid-area: humi-chart;
 }
@@ -178,6 +192,46 @@
   transition: all 0.25s ease-out;
 }
 
+.times-wrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px;
+  padding-top: 10px;
+}
+
+.times {
+  background-color: #1F2833;
+  color: white;
+}
+
+.draw-chart {
+  background-color: #1F2833;
+  color: white;
+  height: 30px;
+  width: 90px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  border-radius: 20px;
+  margin: 15px auto;
+}
+
+.draw-btn {
+  background-color: #1F2833;
+  border-radius: 20px;
+  cursor: pointer;
+  color: white;
+  height: 30px;
+  width: 90px;
+}
+
 .relays {
   display: -ms-grid;
   display: grid;
@@ -268,9 +322,9 @@ input:checked + .sliding-relay::after {
   .content-wrapper {
     -ms-grid-columns: 300px 240px;
         grid-template-columns: 300px 240px;
-    -ms-grid-rows: 255px 255px 255px 255px;
-        grid-template-rows: 255px 255px 255px 255px;
-        grid-template-areas: "weather temp" "weather humi" "temp-chart temp-chart" "humi-chart humi-chart";
+    -ms-grid-rows: auto 255px 255px 255px 255px;
+        grid-template-rows: auto 255px 255px 255px 255px;
+        grid-template-areas: "timezone timezone" "weather temp" "weather humi" "temp-chart temp-chart" "humi-chart humi-chart";
   }
 }
 /*# sourceMappingURL=home.css.map */

@@ -16,14 +16,82 @@
 
 var Temp = [];          // przechowuje dane temperatury do wykresów
 var Humidity = [];      // przechowuje dane wilgotności do wykresów
+var times = [];
 var interval = 15000;   // czas w milisekundach co ile ma się odświeżać wykres
 
 /**
  * wywołuje funkcje get_data_to_disp() gdy strona się załaduje
  */
 $(document).ready(function () {
-    get_data_to_disp();
+    $.ajax({
+        type: 'GET',
+        url: 'php/home_data.php',
+        dataType: 'json',
+        success: function (data) {
+            update_data(data);
+            var start = $("#start-time");
+            var end = $("#end-time");
+            var json_array = data;
+
+            start.val(getDate(new Date(Date.now() - 3600000 + json_array.timezone * 3600000)));
+            end.val(getDate(new Date(Date.now() + json_array.timezone * 3600000)));
+
+            if (json_array.timezone < -9.5) {
+                document.getElementById("timezone").selectedIndex = json_array.timezone + 12;
+            }
+            else if (json_array.timezone < -4.5) {
+                document.getElementById("timezone").selectedIndex = json_array.timezone + 13;
+            }
+            else if (json_array.timezone < -3.5) {
+                document.getElementById("timezone").selectedIndex = json_array.timezone + 14;
+            }
+            else if (json_array.timezone < 3.5) {
+                document.getElementById("timezone").selectedIndex = json_array.timezone + 15;
+            }
+            else if (json_array.timezone < 4.5) {
+                document.getElementById("timezone").selectedIndex = json_array.timezone + 16;
+            }
+            else if (json_array.timezone < 5.5) {
+                document.getElementById("timezone").selectedIndex = json_array.timezone + 17;
+            }
+            else if (json_array.timezone < 5.75) {
+                document.getElementById("timezone").selectedIndex = json_array.timezone + 18;
+            }
+            else if (json_array.timezone < 6.5) {
+                document.getElementById("timezone").selectedIndex = json_array.timezone + 19;
+            }
+            else if (json_array.timezone < 8.75) {
+                document.getElementById("timezone").selectedIndex = json_array.timezone + 20;
+            }
+            else if (json_array.timezone < 9.5) {
+                document.getElementById("timezone").selectedIndex = json_array.timezone + 21;
+            }
+            else if (json_array.timezone < 10.5) {
+                document.getElementById("timezone").selectedIndex = json_array.timezone + 22;
+            }
+            else if (json_array.timezone < 11.5) {
+                document.getElementById("timezone").selectedIndex = json_array.timezone + 23;
+            }
+            else if (json_array.timezone < 12.75) {
+                document.getElementById("timezone").selectedIndex = json_array.timezone + 24;
+            }
+            else if (json_array.timezone <= 14) {
+                document.getElementById("timezone").selectedIndex = json_array.timezone + 25;
+            }
+        },
+        complete: function () {
+            setTimeout(get_data_to_disp, interval);
+        }
+    });
 });
+
+function getDate(date) {
+    const dateAndTime = date.toISOString().split('T')
+    const time = dateAndTime[1].split(':')
+
+    return dateAndTime[0] + 'T' + time[0] + ':' + time[1]
+}
+
 
 /**
  * funckja wykonująca ajax co określony czas (zmianna interval),
@@ -50,9 +118,10 @@ function update_data(json_array) {
     Temp = [];
     Humidity = [];
 
-    for (var i = 0; i < json_array.reading_count; i++) {
-        Temp.push([json_array.reading_time[i], json_array.Temp[i]]);
-        Humidity.push([json_array.reading_time[i], json_array.Humidity[i]]);
+    times = json_array.reading_time.map(function (val) { return val + (json_array.timezone * 3600000); });
+    for (var i = 0; i < times.length; i++) {
+        Temp.push([times[i], json_array.Temp[i]]);
+        Humidity.push([times[i], json_array.Humidity[i]]);
     }
 
     chartT.update({
@@ -72,12 +141,10 @@ function update_data(json_array) {
     var TempTable = document.getElementById('TempTable');
     var HumidityTable = document.getElementById('HumidityTable');
 
-    TempTable.rows[0].cells[0].innerHTML = "Temperature " + json_array.reading_count + " readings";
     TempTable.rows[2].cells[0].innerHTML = json_array.min_temp + "&deg;C";
     TempTable.rows[2].cells[1].innerHTML = json_array.max_temp + "&deg;C";
     TempTable.rows[2].cells[2].innerHTML = json_array.avg_temp + "&deg;C";
 
-    HumidityTable.rows[0].cells[0].innerHTML = "Humidity " + json_array.reading_count + " readings";
     HumidityTable.rows[2].cells[0].innerHTML = json_array.min_humi + "%";
     HumidityTable.rows[2].cells[1].innerHTML = json_array.max_humi + "%";
     HumidityTable.rows[2].cells[2].innerHTML = json_array.avg_humi + "%";
@@ -155,7 +222,7 @@ Highcharts.setOptions({
                 color: 'white'
             },
         },
-        tickInterval: 60 * 1000 * 4
+        tickInterval: 60 * 1000 * 10
     },
 
     yAxis: {
@@ -228,13 +295,16 @@ var box = document.querySelectorAll('.box');
  * dla boxa od temperatury i wilgotności dodaje
  * zdarzenie podczas kliknięcia (wykreślenie wyresu na pełnym ekranie)
  */
+var chart_id;
 box.forEach(box => {
     box.addEventListener('click', () => {
         modal.classList.add('open');
         if (box.classList.contains('gauge--1')) {
             generate_chart(Temp, "DHT11 Temp", "Temperature (Celcius)");
+            chart_id = "Temp";
         } else if (box.classList.contains('gauge--2')) {
             generate_chart(Humidity, "DHT11 Humidity", "Humidity (%)");
+            chart_id = "Humidity";
         }
     })
 })
@@ -249,6 +319,10 @@ var chart;
  */
 function generate_chart(serie, msg, msg2) {
     chart = new Highcharts.Chart('modal-chart', {
+        chart: {
+            zoomType: 'xy'
+        },
+
         title: {
             text: msg
         },
@@ -287,6 +361,7 @@ var nr = 1;
 $('.relays').each(function () {
     var relay = $(this).find('p');
     var check = $(this).find(':checkbox');
+    var rel = $(this);
     $.ajax({
         url: "../db_handlers/get_relay_names.php",
         method: "POST",
@@ -300,6 +375,13 @@ $('.relays').each(function () {
             }
             else {
                 check.prop('checked', false);
+            }
+
+            if (json.display == 1) {
+                rel.css("display", "grid");
+            }
+            else {
+                rel.css("display", "none");
             }
         }
     })
@@ -319,3 +401,56 @@ $('.relays').each(function () {
     });
 
 });
+
+var prev_timezone = $('.timezone').val();
+$('.timezone').change(function () {
+    $.ajax({
+        url: "php/set_timezone.php",
+        method: "POST",
+        data: "timezone=" + $('.timezone').val()
+    })
+    if (prev_timezone > $('.timezone').val()) {
+        times = times.map(function (val) { return val - ((Math.abs(prev_timezone - $('.timezone').val())) * 3600000); });
+    } else if (prev_timezone < $('.timezone').val()) {
+        times = times.map(function (val) { return val + ((Math.abs(prev_timezone - $('.timezone').val())) * 3600000); });
+    }
+    prev_timezone = $('.timezone').val();
+    for (var i = 0; i < times.length; i++) {
+        Temp[i][0] = times[i];
+        Humidity[i][0] = times[i];
+    }
+
+    chartT.update({
+        series: [{
+            data: Temp
+        }],
+    });
+    chartH.update({
+        series: [{
+            data: Humidity
+        }],
+    });
+});
+
+$('.draw-btn').click(function () {
+    var start_time = (+new Date($('#start-time').val()) - ($('.timezone').val() * 3600000)) / 1000;
+    var end_time = (+new Date($('#end-time').val()) - ($('.timezone').val() * 3600000)) / 1000;
+    $.ajax({
+        url: "php/get_data_to_charts.php",
+        method: "POST",
+        data: "chart=" + chart_id + "&start=" + start_time + "&end=" + end_time,
+        dataType: "json",
+        success: function (data) {
+            var series = [];
+            times = data.reading_time.map(function (val) { return val + ($('.timezone').val() * 3600000); });
+            for (var i = 0; i < times.length; i++) {
+                series.push([times[i], data.series[i]]);
+            }
+            chart.update({
+                series: [{
+                    data: series
+                }],
+            });
+        }
+    })
+})

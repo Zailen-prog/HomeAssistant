@@ -2,7 +2,7 @@
 
 session_start();
 if (isset($_SESSION['logged'])) {
-    header('location:home.php');
+    header('location:home/home.php');
 }
 
 ?>

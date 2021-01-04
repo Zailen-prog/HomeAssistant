@@ -3,7 +3,7 @@
 /**
  * skrypt odbierający dane od esp8266 i zapisujący je do bazy danych
  */
-include '/db_handlers/db_connection.php';
+include 'db_connection.php';
 $con = OpenCon();
 
 foreach ($_REQUEST as $key => $value) {
@@ -25,4 +25,5 @@ $ss = mysqli_prepare($con, $sq);
 $ss->bind_param("sdi", $id, $Temp, $Humidity);
 $ss->execute();
 CloseCon($con);
-echo "succes";
+$return = "done";
+echo json_encode($return);

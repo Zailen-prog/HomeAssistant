@@ -55,9 +55,53 @@ $('.relays').each(function () {
         show = $(this).children('span');
         show_data();
     });
-
-
 });
+
+/**
+ * dla każdego przekaźnika zostaje wywołany ajax do pliku display_relay.php
+ * który zwraca stan wyświetlania przekaźnika o podanym numerze,
+ */
+var nr_disp = 1;
+$('.relay-btn').each(function () {
+    var rel = $(this);
+    $.ajax({
+        url: "php/display_relay.php",
+        method: "POST",
+        data: "check=" + nr_disp,
+        success: function (data) {
+            if (data == 1) {
+                rel.html("Active");
+                rel.css("background-color", "rgba(0, 255, 8, 0.481)");
+            }
+            else {
+                rel.html("Deactivated");
+                rel.css("background-color", "rgba(255, 0, 0, 0.481)");
+            }
+        }
+    })
+    nr_disp = nr_disp + 1;
+    $(this).click(function () {
+        if ($(this).text() == "Active") {
+            $(this).html("Deactivated");
+            $(this).css("background-color", "rgba(255, 0, 0, 0.481)");
+            $.ajax({
+                url: "php/display_relay.php",
+                method: "POST",
+                data: "display=0" + "&name=" + $(this).parent().parent().find('span').text(),
+            })
+        } else {
+            $(this).html("Active");
+            $(this).css("background-color", "rgba(0, 255, 8, 0.481)");
+            $.ajax({
+                url: "php/display_relay.php",
+                method: "POST",
+                data: "display=1" + "&name=" + $(this).parent().parent().find('span').text(),
+            })
+        }
+
+    });
+});
+
 
 /**
  * po naciśnieciu przycisku save podczas edycji wykonuja ajax do pliku update_relays.php
@@ -69,7 +113,7 @@ $('#save_values').on('submit', function (event) {
         url: "php/update_relays.php",
         method: "POST",
         data: $(this).serialize() + "&update=" + show.text(),
-        success: function (data) {
+        success: function () {
             show.html($('#name-relay').val());
             $(this).find(':input:not(.btn)').prop('disabled', true);
         }

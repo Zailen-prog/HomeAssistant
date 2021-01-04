@@ -14,11 +14,12 @@ if (!isset($_SESSION['logged'])) {
 
 $con = OpenCon();
 
-$sql = "select name, state from relays where ID = '" . $_SESSION['user'] . "' AND relay_nr= " . $_POST['relay_nr'] . "";
+$sql = "select name, state, display from relays where ID = '" . $_SESSION['user'] . "' AND relay_nr= " . $_POST['relay_nr'] . "";
 if ($result = $con->query($sql)) {
     $data = $result->fetch_assoc();
     $json_data['name'] = $data['name'];
     $json_data['state'] = $data['state'];
+    $json_data['display'] = $data['display'];
     echo json_encode($json_data, JSON_NUMERIC_CHECK);
 }
 

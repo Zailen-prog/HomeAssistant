@@ -43,33 +43,63 @@ if (!isset($_SESSION['logged'])) {
         <div class="relay-box">
             <div class="relays nr-1">
                 <span>relay1</span>
+                <div class="active">
+                    <button class="relay-btn">Acitve</button>
+                </div>
             </div>
             <div class="relays nr-2">
                 <span>relay2</span>
+                <div class="active">
+                    <button class="relay-btn">Acitve</button>
+                </div>
             </div>
             <div class="relays nr-3">
                 <span>relay3</span>
+                <div class="active">
+                    <button class="relay-btn">Acitve</button>
+                </div>
             </div>
             <div class="relays nr-4">
                 <span>relay4</span>
+                <div class="active">
+                    <button class="relay-btn">Acitve</button>
+                </div>
             </div>
             <div class="relays nr-5">
                 <span>relay5</span>
+                <div class="active">
+                    <button class="relay-btn">Acitve</button>
+                </div>
             </div>
             <div class="relays nr-6">
                 <span>relay6</span>
+                <div class="active">
+                    <button class="relay-btn">Acitve</button>
+                </div>
             </div>
             <div class="relays nr-7">
                 <span>relay7</span>
+                <div class="active">
+                    <button class="relay-btn">Acitve</button>
+                </div>
             </div>
             <div class="relays nr-8">
                 <span>relay8</span>
+                <div class="active">
+                    <button class="relay-btn">Acitve</button>
+                </div>
             </div>
             <div class="relays nr-9">
                 <span>relay9</span>
+                <div class="active">
+                    <button class="relay-btn">Acitve</button>
+                </div>
             </div>
             <div class="relays nr-10">
                 <span>relay10</span>
+                <div class="active">
+                    <button class="relay-btn">Acitve</button>
+                </div>
             </div>
         </div>
         <div class="relay-info">
@@ -88,11 +118,13 @@ if (!isset($_SESSION['logged'])) {
                             <p class="relays-text">Temp Control</p>
                         </label>
                     </div>
+                    <div>
+                        <label for="temp-value-relay">
+                            Ref value:
+                        </label>
+                        <input type="number" min=-10 max=150 id="temp-value-relay" name="temp-value-relay" disabled>
+                    </div>
 
-                    <label for="temp-value-relay">
-                        Ref value:
-                    </label>
-                    <input type="number" min=-10 max=150 id="temp-value-relay" name="temp-value-relay" disabled>
                 </div>
 
                 <div class="humi-control">
@@ -103,11 +135,12 @@ if (!isset($_SESSION['logged'])) {
                             <p class="relays-text">Humidity Control</p>
                         </label>
                     </div>
-
-                    <label for="humi-value-relay">
-                        Ref value:
-                    </label>
-                    <input type="number" min=0 max=100 id="humi-value-relay" name="humi-value-relay" disabled>
+                    <div>
+                        <label for="humi-value-relay">
+                            Ref value:
+                        </label>
+                        <input type="number" min=0 max=100 id="humi-value-relay" name="humi-value-relay" disabled>
+                    </div>
                 </div>
 
                 <div>
