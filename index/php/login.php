@@ -19,7 +19,7 @@ if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
 } else {
 
-    $sq = "select * from users where LOGIN =?";
+    $sq = "select LOGIN, PASSWORD from users where LOGIN =?";
     $ss = mysqli_prepare($con, $sq);
     $ss->bind_param("s", $login);
     $login = $_POST['loginL'];
@@ -35,7 +35,6 @@ if (!$con) {
         $output = '';
         if (password_verify($password, $user['PASSWORD'])) {
             $_SESSION['user'] = $login;
-            $_SESSION['name'] = $user['NAME'];
             $_SESSION['logged'] = true;
         } else {
             $output = '<label class="text-danger">Invalid Login or Password</label>';

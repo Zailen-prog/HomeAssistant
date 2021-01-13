@@ -32,6 +32,10 @@ function show_data() {
     })
 }
 
+$(document).ready(function () {
+    show_data();
+})
+
 var show = $('.nr-1').children('span');
 var nr = 1;
 /**

@@ -106,9 +106,9 @@ if (!isset($_SESSION['logged'])) {
             <form id="save_values" method="POST">
                 <div>
                     <label for="name-relay">
-                        <p>Name</p>
+                        Name:
                     </label>
-                    <input type="text" id="name-relay" name="name-relay" disabled>
+                    <input type="text" id="name-relay" name="name-relay" class="change-input" maxlength=15 disabled>
                 </div>
                 <div class="temp-control">
                     <div class="relay-label">
@@ -122,7 +122,7 @@ if (!isset($_SESSION['logged'])) {
                         <label for="temp-value-relay">
                             Ref value:
                         </label>
-                        <input type="number" min=-10 max=150 id="temp-value-relay" name="temp-value-relay" disabled>
+                        <input type="number" min=-10 max=150 id="temp-value-relay" name="temp-value-relay" class="change-input" disabled>
                     </div>
 
                 </div>
@@ -139,7 +139,7 @@ if (!isset($_SESSION['logged'])) {
                         <label for="humi-value-relay">
                             Ref value:
                         </label>
-                        <input type="number" min=0 max=100 id="humi-value-relay" name="humi-value-relay" disabled>
+                        <input type="number" min=0 max=100 id="humi-value-relay" name="humi-value-relay" class="change-input" disabled>
                     </div>
                 </div>
 

@@ -223,7 +223,7 @@ Highcharts.setOptions({
                 color: 'white'
             },
         },
-        tickInterval: 60 * 1000 * 10
+        minTickInterval: 200
     },
 
     yAxis: {
@@ -459,6 +459,18 @@ $('.draw-btn').click(function () {
                 times = data.reading_time.map(function (val) { return val + ($('.timezone').val() * 3600000); });
                 for (var i = 0; i < times.length; i++) {
                     series.push([times[i], data.series[i]]);
+                }
+                const neededCount = 1000;
+                var result = [];
+                if (neededCount < series.length) {
+                    const totalItems = series.length;
+                    const interval = totalItems / neededCount;
+
+                    for (let i = 0; i < neededCount; i++) {
+                        const evenIndex = Math.floor(i * interval + interval / 2);
+                        result.push(series[evenIndex]);
+                    }
+                    series = result;
                 }
                 chart.update({
                     series: [{

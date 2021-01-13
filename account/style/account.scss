@@ -1,0 +1,86 @@
+.content-wrapper{
+    height: 600px;
+    width: 500px;
+    transform: translateY(60px);
+    background-color:#1F2833;
+    margin: 0 auto;
+    padding: 15px;
+}
+ 
+h1{
+  color:#66FCF1;
+  border-bottom: inset;
+}
+
+h2{
+  font-size: 20px;
+  color:#66FCF1;
+  margin: 10px 0;
+}
+
+label{
+  color:#66FCF1;
+  display: table-cell;
+  text-align: right;
+}
+div.row{
+  display:table-row;
+}
+
+div{
+  margin: 5px 0;
+}
+
+input{
+  font-size: 20px;
+  color:white;
+  background-color:#1F2833;
+  display: table-cell;
+}
+
+.text-success{
+  color: green;
+}
+.text-danger{
+  color: red;
+}
+
+#message{
+  display:table;
+  margin:10px auto;
+  font-size: 12px;
+  position: relative;
+  text-align: center;
+  font-size: 15px;
+}
+
+#save_info input{
+  border-style: none;
+  border-width: 0px;
+}
+
+#mail{
+  width: 300px;
+}
+
+#save, #cancel {
+  display:none;
+}
+
+.btn{
+  cursor: pointer;
+  border-style: outset;
+  border-width: 2px;
+  color: #66FCF1;
+  font-size: 20px;
+  background: #27303a;
+  border-radius: 20px;
+  height: 30px;
+  width: 100px;
+}
+
+@media screen and (max-width: 520px){
+  .content-wrapper{
+    width: 90%;
+}
+}
