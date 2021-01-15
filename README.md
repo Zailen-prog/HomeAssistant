@@ -10,7 +10,7 @@ Now you need server for website as well as database.</br>
 You can use hosting from 3rd party company and deploy webstite there or just setup local server on your machine.</br>
 To set up with server on your machine:
 1. Download [XAMPP](https://www.apachefriends.org/pl/download.html) and install it.
-2. Open it, you should see this window <img src="https://user-images.githubusercontent.com/76070960/104770409-d1a2e780-5770-11eb-8cfb-d4f2ad602884.png">
+2. Open it, you should see this window </br><img src="https://user-images.githubusercontent.com/76070960/104770409-d1a2e780-5770-11eb-8cfb-d4f2ad602884.png">
 3. To start server and database press Start for module Apache and MySQL. Thats it.
 4. Now to configure database press Admin for MySQL or just type [localhost/phpmyadmin](http://localhost/phpmyadmin) in your browser.
 5. You should see this <img src="https://user-images.githubusercontent.com/76070960/104772493-ce5d2b00-5773-11eb-8cbb-bf5a1d0d9d7d.png"> 
