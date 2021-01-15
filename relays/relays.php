@@ -110,38 +110,6 @@ if (!isset($_SESSION['logged'])) {
                     </label>
                     <input type="text" id="name-relay" name="name-relay" class="change-input" maxlength=15 disabled>
                 </div>
-                <div class="temp-control">
-                    <div class="relay-label">
-                        <input type="checkbox" id="temp-control" name="temp-control" disabled>
-                        <div class="sliding-relay"> </div>
-                        <label class="relay-label" for="temp-control">
-                            <p class="relays-text">Temp Control</p>
-                        </label>
-                    </div>
-                    <div>
-                        <label for="temp-value-relay">
-                            Ref value:
-                        </label>
-                        <input type="number" min=-10 max=150 id="temp-value-relay" name="temp-value-relay" class="change-input" disabled>
-                    </div>
-
-                </div>
-
-                <div class="humi-control">
-                    <div class="relay-label">
-                        <input type="checkbox" id="humi-control" name="humi-control" disabled>
-                        <div class="sliding-relay"> </div>
-                        <label class="relay-label" for="humi-control">
-                            <p class="relays-text">Humidity Control</p>
-                        </label>
-                    </div>
-                    <div>
-                        <label for="humi-value-relay">
-                            Ref value:
-                        </label>
-                        <input type="number" min=0 max=100 id="humi-value-relay" name="humi-value-relay" class="change-input" disabled>
-                    </div>
-                </div>
 
                 <div>
                     <label for="description-relay">

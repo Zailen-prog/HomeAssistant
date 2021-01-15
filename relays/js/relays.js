@@ -13,20 +13,6 @@ function show_data() {
         success: function (data) {
             var jsonArray = data;
             $('#name-relay').val(show.text());
-            if (jsonArray.Temp_control == 1) {
-                $('#temp-control').prop('checked', true);
-            } else {
-                $('#temp-control').prop('checked', false);
-            }
-
-            $('#temp-value-relay').val(jsonArray.Temp_value);
-
-            if (jsonArray.Humi_control == 1) {
-                $('#humi-control').prop('checked', true);
-            } else {
-                $('#humi-control').prop('checked', false);
-            }
-            $('#humi-value-relay').val(jsonArray.Humi_value);
             $('#description-relay').val(jsonArray.description);
         },
     })
