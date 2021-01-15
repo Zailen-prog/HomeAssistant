@@ -1,0 +1,57 @@
+[
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino"
+  },
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\variants\\standard"
+  },
+  {
+    "Sourcefile": "d:\\Semestr 5\\Semestr 5\\IT\\IT PROJECT\\HomeAssistant\\HomeAssistant\\build\\sketch\\HomeAssistant.ino.cpp",
+    "Include": "SerialESP8266wifi.h",
+    "Includepath": "C:\\Users\\sebas\\Documents\\Arduino\\libraries\\ESP8266wifi-master"
+  },
+  {
+    "Sourcefile": "d:\\Semestr 5\\Semestr 5\\IT\\IT PROJECT\\HomeAssistant\\HomeAssistant\\build\\sketch\\HomeAssistant.ino.cpp",
+    "Include": "SoftwareSerial.h",
+    "Includepath": "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\libraries\\SoftwareSerial\\src"
+  },
+  {
+    "Sourcefile": "d:\\Semestr 5\\Semestr 5\\IT\\IT PROJECT\\HomeAssistant\\HomeAssistant\\build\\sketch\\HomeAssistant.ino.cpp",
+    "Include": "OneWire.h",
+    "Includepath": "C:\\Users\\sebas\\Documents\\Arduino\\libraries\\OneWire"
+  },
+  {
+    "Sourcefile": "d:\\Semestr 5\\Semestr 5\\IT\\IT PROJECT\\HomeAssistant\\HomeAssistant\\build\\sketch\\HomeAssistant.ino.cpp",
+    "Include": "DallasTemperature.h",
+    "Includepath": "C:\\Users\\sebas\\Documents\\Arduino\\libraries\\DallasTemperature"
+  },
+  {
+    "Sourcefile": "d:\\Semestr 5\\Semestr 5\\IT\\IT PROJECT\\HomeAssistant\\HomeAssistant\\build\\sketch\\HomeAssistant.ino.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\sebas\\Documents\\Arduino\\libraries\\ESP8266wifi-master\\SerialESP8266wifi.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\libraries\\SoftwareSerial\\src\\SoftwareSerial.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\sebas\\Documents\\Arduino\\libraries\\OneWire\\OneWire.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\sebas\\Documents\\Arduino\\libraries\\DallasTemperature\\DallasTemperature.cpp",
+    "Include": "",
+    "Includepath": null
+  }
+]
