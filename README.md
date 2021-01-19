@@ -5,11 +5,16 @@ Web site that is connected to Arduino with help of EPS8266-01s module.</br>
 On web site we can display data collected from sensor and controll relays.
 # Instructions
 ## How to open project on your machine
-### If you are not familiar with XAMPP and phpmyadmin go to this [section](###To-set-up-with-server-on-your-machine)
-1. 
-First download all the files from repesitorium and unpack them.</br>
-Now you need server for website as well as database.</br>
-You can use hosting from 3rd party company and deploy webstite there or just setup local server on your machine.</br>
+### For people that knows XAMPP (if you dont know anyhing about XAMPP and how to setup server and data base go to this [section](#To-set-up-with-server-on-your-machine))
+1. First download all the files from repesitorium and unpack them.</br>
+2. Run local apache server and MySQL database on XAMPP.
+3. Create new database with the name `homeassistant` (you can name it whatever you want but you would need to edit `website/db_handlers/db_connection.php` file).
+4. Import `homeassistant.sql` to our new database.
+5. Copy all the files from `website` folder to root direction of your local server.
+
+You can use this link [http://localhost/db_handlers/save_data.php?id=Test123&Temp=27&Humidity=26](http://localhost/db_handlers/save_data.php?id=Test123&Temp=27&Humidity=26) to insert new data where `Test123` is account login.</br>
+You can use this link [http://localhost/db_handlers/send_to_esp.php?id=Test123](http://localhost/db_handlers/send_to_esp.php?id=Test123) to get states of relays where `Test123` is account login.
+
 ### To set up with server on your machine:
 1. Download [XAMPP](https://www.apachefriends.org/pl/download.html) and install it.
 2. Open it, you should see this window </br><img src="https://user-images.githubusercontent.com/76070960/104770409-d1a2e780-5770-11eb-8cfb-d4f2ad602884.png">
@@ -17,7 +22,7 @@ You can use hosting from 3rd party company and deploy webstite there or just set
 ### Configure database and website
 1. Press Admin for MySQL or just type [localhost/phpmyadmin](http://localhost/phpmyadmin) in your browser.
 2. You should see this <img src="https://user-images.githubusercontent.com/76070960/104772493-ce5d2b00-5773-11eb-8cbb-bf5a1d0d9d7d.png"> 
-3. Press New on the right side, choose Database name (you can use whatever but I prefer *homeassistant* that way you wont have to change anything in the files) then press Create.</br> <img src="https://user-images.githubusercontent.com/76070960/104773188-f436ff80-5774-11eb-81e0-e4f529ebe77f.png">
+3. Press New on the right side, choose Database name (you can use whatever but I prefer `homeassistant` that way you wont have to change anything in the files) then press Create.</br> <img src="https://user-images.githubusercontent.com/76070960/104773188-f436ff80-5774-11eb-81e0-e4f529ebe77f.png">
 * If you chosen diffrent name go to `website/db_handlers/db_connection.php` and edit `$db` to your db name
 4. Now you have to import file with all tables and some data. Make sure you have selected correct database and press Import <img src="https://user-images.githubusercontent.com/76070960/104773681-b7b7d380-5775-11eb-842d-e09f63867add.png">
 5. Now search for `homeassistant.sql` file and then press Go. It should add 3 tables (data, relays and users) to your database.
