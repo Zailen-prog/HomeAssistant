@@ -12,6 +12,8 @@ On web site we can display data collected from sensor and controll relays.
 4. Import `homeassistant.sql` to our new database.
 5. Copy all the files from `website` folder to root direction of your local server.
 
+Go to this [section](#Set-up-Arduino-and-ESP8266) if you want to set up arduino and esp
+
 You can use this link [http://localhost/db_handlers/save_data.php?id=Test123&Temp=27&Humidity=26](http://localhost/db_handlers/save_data.php?id=Test123&Temp=27&Humidity=26) to insert new data where `Test123` is account login.</br>
 You can use this link [http://localhost/db_handlers/send_to_esp.php?id=Test123](http://localhost/db_handlers/send_to_esp.php?id=Test123) to get states of relays where `Test123` is account login.
 
