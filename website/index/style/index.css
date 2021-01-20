@@ -99,12 +99,17 @@ body {
   margin: 5px 5px 15px 0px;
 }
 
-.input-group span {
+#remember {
   color: #66FCF1;
   font-size: 12px;
   left: 20px;
   margin: 5px 5px 15px 0px;
   position: absolute;
+}
+
+.valid {
+  font-size: 15px;
+  color: #66FCF1;
 }
 
 #error_message {

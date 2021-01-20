@@ -1,8 +1,7 @@
 <?php
 
 /**
- * skrypt pobierający z bazy danych informacje o przekaźniku i danej nazwie
- * i zwraca te dane w postacji zmiennej typu json
+ * skrypt pobierający z bazy danych informacje o koncie
  */
 include '../../db_handlers/db_connection.php';
 

@@ -30,16 +30,18 @@ if (isset($_SESSION['logged'])) {
                 <span id="error_message"></span>
                 <input id=loginL name="loginL" type="text" class="input-field" placeholder="Login" required>
                 <input name="passwordL" type="password" class="input-field" placeholder="Password" required>
-                <input type="checkbox" class="check-box" id="rememberMe"><span>Remember Me</span>
+                <input type="checkbox" class="check-box" id="rememberMe"><span id="remember">Remember Me</span>
                 <button type="submit" class="submit-btn" onclick="lsRememberMe()">Log In</button>
             </form>
             <form id="register" class="input-group" method="POST">
                 <span id="message"></span>
                 <input name="login" type="text" class="input-field" placeholder="Login" required pattern="[a-zA-Z][A-Za-z0-9]{5,15}">
+                <span class="valid">At least 5, max 15 characters </br>At least 1 upper and lower case </br>At least 1 number </br>No special characters</span>
                 <input name="email" type="email" class="input-field" placeholder="E-mail" required>
                 <input name="name" type="text" class="input-field" placeholder="Name" required pattern="[A-Za-z]{1,32}">
                 <input name="lastname" type="text" class="input-field" placeholder="Last Name" required pattern="[A-Za-z]{1,32}">
                 <input name="password" id="password1" oninput="setPasswordConfirmValidity();" type="password" class="input-field" placeholder="Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}">
+                <span class="valid">At least 8, max 20 characters </br>At least 1 upper and lower case </br>At least 1 number</span>
                 <input id="password2" oninput="setPasswordConfirmValidity();" type="password" class="input-field" placeholder="Repeat Password" required>
                 <button type="submit" class="submit-btn">Register</button>
             </form>

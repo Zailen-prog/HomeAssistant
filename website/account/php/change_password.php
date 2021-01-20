@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * zapisujący nowe hasło do bazy danych
+ */
 
 include '../../db_handlers/db_connection.php';
 session_start();

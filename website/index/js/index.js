@@ -14,7 +14,7 @@ function register() {
     y.style.left = "50px";
     z.style.left = "110px";
     err.style.display = "none";
-    form.style.height = "450px"
+    form.style.height = "600px"
 }
 
 function login() {

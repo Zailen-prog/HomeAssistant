@@ -9,8 +9,8 @@ byte humidity;
 
 double temp;
 
-String save_url = "http://192.168.1.2/db_handlers/save_data.php?",
-       get_url = "http://192.168.1.2/db_handlers/send_to_esp.php?id=";
+String save_url = "http://homehand.000webhostapp.com/db_handlers/save_data.php?",
+       get_url = "http://homehand.000webhostapp.com/db_handlers/send_to_esp.php?id=";
 
 String output;
 String id = "Test123";
